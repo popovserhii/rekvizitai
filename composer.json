@@ -15,7 +15,7 @@
     "require" : {},
     "autoload" : {
         "psr-0" : {
-            "Mediapark\\RekvizitaiBundle" : ""
+            "Mediapark\\RekvizitaiBundle" : "src/"
         }
     },
     "minimum-stability": "dev",
