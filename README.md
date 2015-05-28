@@ -82,6 +82,8 @@ parameters:
 
 ```
 
+# ERRORS CODES
+
 ```php
 //error codes
 const NO_RESULTS_ERROR = 1;
