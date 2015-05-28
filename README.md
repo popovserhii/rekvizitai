@@ -39,8 +39,9 @@ public function registerBundles() {
 
 Add own company factory class and errors class (must extend RekvizitaiErrors and RekvizitaiCompanyFactory). 
 THIS IS OPTIONAL - by default RekvizitaiErrors and RekvizitaiCompanyFactory classes are set.
+(these parameters are going to be moved to config.yml soon. BRACE YOURSELVES)
 ```yaml
-#services.yml
+#parameters.yml
 parameters:
   ...
   rekvizitai.company.factory.class: Acme\DemoBundle\OwnCompanyFactoryClass
