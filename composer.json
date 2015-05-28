@@ -1,0 +1,30 @@
+{
+    "name" : "mediapark/rekvizitai-api",
+    "description" : "Mediapark rekvizitai api service",
+    "type" : "symfony-bundle",
+    "authors" : [{
+        "name" : "algirdas",
+        "email" : "algirdas@mediapark.lt"
+    }],
+    "keywords" : [
+        "rekvizitai api"
+    ],
+    "license" : [
+        "MIT"
+    ],
+    "require" : {},
+    "autoload" : {
+        "psr-0" : {
+            "Mediapark\\RekvizitaiBundle" : ""
+        }
+    },
+    "minimum-stability": "dev",
+    "target-dir" : "Mediapark/RekvizitaiBundle",
+    "repositories" : [{
+    }],
+    "extra" : {
+    "branch-alias" : {
+            "dev-master" : "0.1-dev"
+        }
+    }
+}
