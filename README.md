@@ -82,7 +82,7 @@ parameters:
 
 ```
 
-## ERRORS CODES
+### ERRORS CODES
 
 ```php
 //error codes
