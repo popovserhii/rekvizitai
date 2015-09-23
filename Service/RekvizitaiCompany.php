@@ -100,6 +100,10 @@ class RekvizitaiCompany {
   public function getTitle() {
     return $this->title;
   }
+
+  public function getURL() {
+    return $this->url;
+  }
 }
 
 ?>
