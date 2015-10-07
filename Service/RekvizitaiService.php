@@ -10,6 +10,7 @@ use Mediapark\RekvizitaiBundle\Service\RekvizitaiMethods;
 class RekvizitaiService {
   const STATUS_SUCCESS = 'success';
   const STATUS_ERROR = 'error';
+  const STATUS_ERROR_CAN_NOT_CONNECT = 'error_cannot_connect';
 
   protected $key;
   protected $result;
@@ -117,10 +118,20 @@ class RekvizitaiService {
 
   protected function checkResult() {
     if (!$this->resultExists()) {
-      throw new \Exception('REKVIZITAI SERVICE: No result. Fetch firstly.');
+      $result = $this->defaultResult();
+      $this->setResult($result);
     }
 
     return $this->getResult();
+  }
+
+  protected function defaultResult() {
+    $reflection = new \ReflectionClass($this->errorsClass);
+
+    $result = new \stdClass;
+    $result->status = self::STATUS_ERROR;
+    $result->error = $this->getErrorsClass()->getErrorByCode($reflection->getConstant('CAN_NOT_CONNECT'));
+    return $result;
   }
 
   public function getStatus() {
@@ -140,12 +151,12 @@ class RekvizitaiService {
 
   public function countCompanies() {
     $result = $this->checkResult();
-    $companies = $result->companies;
     $noCompanies = !isset($result->companies);
     if ($noCompanies) {
       return 0;
     }
     else {
+      $companies = $result->companies;
       return count($companies->company);
     } 
   }
@@ -215,7 +226,7 @@ class RekvizitaiService {
 
   protected function fetchFromURL($url) {
     $result = @simplexml_load_file($url);
-    return ($result) ? $result : false;
+    return ($result) ? $result : null;
   }
 
 }
