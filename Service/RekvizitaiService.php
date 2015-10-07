@@ -108,7 +108,8 @@ class RekvizitaiService {
   protected function getByTitle($title) {
     $url = $this->getUrl()->generateURL($this->getKey(), $this->getMethods()->generateByMethod('search', array(':query' => $title)));
 
-    $xml = simplexml_load_file($url);
+
+    $xml = $this->fetchFromURL($url);
 
     $this->setResult($xml);
     return $this->getResult();
@@ -193,7 +194,7 @@ class RekvizitaiService {
   protected function getByCode($code) {
     $url = $this->getUrl()->generateURL($this->getKey(), $this->getMethods()->generateByMethod('companyDetails', array(':code' => $code)));
 
-    $xml = simplexml_load_file($url);
+    $xml = $this->fetchFromURL($url);
 
     $this->setResult($xml);
   }
@@ -210,6 +211,11 @@ class RekvizitaiService {
     }
 
     return $result;
+  }
+
+  protected function fetchFromURL($url) {
+    $result = @simplexml_load_file($url);
+    return ($result) ? $result : false;
   }
 
 }
