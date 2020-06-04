@@ -3,6 +3,7 @@ parameters:
     rekvizitai.errors_class: ~
 
 services:
+    _defaults: { public: true }
     mp.rekvizitai:
         class: Mediapark\RekvizitaiBundle\Service\RekvizitaiService
         arguments: ['%rekvizitai_api%', '%rekvizitai.company.factory.class%', '%rekvizitai.errors_class%']
